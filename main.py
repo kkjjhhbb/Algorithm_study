@@ -1,2 +1,2 @@
-a = input()
-print(a)
+a= int(input())
+print(format(a,'o'))
