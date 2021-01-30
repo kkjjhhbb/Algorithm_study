@@ -1,4 +1,7 @@
-a=int(input())
-for i in range(a-1,0,-1):
-  print(a)
-  a-=1
+n= int(input())
+sum = 0 
+for i in range(1,n):
+  sum+=i
+  if(sum>=n):
+    print(i)
+    break
