@@ -1,44 +1,31 @@
-list =[]
+s= input()
+a=[]
+one= 0
+zero=0
+bool=True
+count =0
 
-for i in range(10):
-  list.append([])
-  for j in range(10):
-    list[i].append(0)
+for i in range(len(s)):
+  a.append(int(s[i]))
+  if a[i] == 1: one += 1
+  else: zero += 1
 
-for i in range(10):
-  a=input().split()
-  for j in range(10):
-    list[i][j]=int(a[j])
+if one > zero : bool = True #1의 갯수가 많음
+i=1
 
+if bool == True:
+  for i in (0,len(a)-1):
+    if a[i] == 0:
+      while a[i+1] == 0:
+        i += 1
+        if i >= len(a) :break
+      count += 1
+else: 
+ while i != len(a)-1:
+    if a[i] == 1:
+      print(i,count)
+      while a[i+1] == 1:
+        i += 1
+      count += 1
 
-def print_road():
-  for i in range(10):
-    for j in range(10):
-      print(list[i][j],end=' ')
-    print()
-
-
-
-def find():
-  y=1
-
-  for i in range(1,10):
-    for j in range(1,10):
-      if list[i][y] != 2:
-
-        if list[i][y] != 9 and list[i][y] == 0 :
-          list[i][y]=9
-          y += 1
-
-        elif list[i][y] != 9 and list[i][y] == 1 :
-          y -= 1
-          break
-        
-
-      else :
-        list[i][y]=9
-        return 0
-
-  
-find()
-print_road()
+print(count)
