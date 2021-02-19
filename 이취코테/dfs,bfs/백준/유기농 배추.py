@@ -1,3 +1,6 @@
+import sys
+sys.setrecursionlimit(100000)
+
 test=int(input())
 
 def dfs(x,y):

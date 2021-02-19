@@ -28,6 +28,7 @@ for i in range(n):
       result += 1
       h_list.append(num)
     num=0
+    
 h_list.sort()
 print(result)
 for i in h_list:
