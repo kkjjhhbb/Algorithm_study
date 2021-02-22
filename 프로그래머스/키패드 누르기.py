@@ -7,6 +7,7 @@ def solution(numbers, hand):
     y2=2
     keys=[1,2,3,4,5,6,7,8,9,'*',0,'#']
     where=[]
+    #키패드 위치 삽입
     for i in range(4):
         for j in range(3):
             where.append([i,j])
