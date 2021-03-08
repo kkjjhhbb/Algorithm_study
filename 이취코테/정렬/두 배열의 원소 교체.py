@@ -8,5 +8,3 @@ for i in range(k):
   if a[i] < b[n-1-i]:
     a[i]=b[n-1-i]
   else: break
-  
-print(sum(a))
