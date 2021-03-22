@@ -38,6 +38,3 @@ def dijkstra(start):
         heapq.heappush(q,(cost,i[0]))
 
 dijkstra(start)
-
-
-
