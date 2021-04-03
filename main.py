@@ -1,59 +1,29 @@
-def solution(p):
-    ope = 0
-    close = 0
-    u=''
-    v=''
-    if len(p) == 0:
-        return p
-    if check(p) == True:
-        return p
+n= int(input())
+graph=[]
+count = 0
+visited=[[False]*n for i in range(n)]
+print(visited)
+for i in range(n):
+  graph.append(list(input().split()))
 
-    for i in range(len(p)):
-        if p[i] == '(':
-            ope += 1
-        else:
-            close += 1
-
-        #u / v로 분리하는 과정    
-        if ope - close == 0:
-            for j in range(i+1):
-                u += p[j]
-            for k in range(i+1,len(p)):
-                v += p[k]
-            break
-
-    if check(u) == True:
-        u+=solution(v)
-        return u
-    else:
-        st = '('
-        st+=solution(v)
-        st+=')'
-        u=list(u)
-        u.pop()
-        u.pop(0)
-        st+=reverse(''.join(u))
-        return st
+def dfs(x,y):
+    global count
+    if x<0 or y<0 or x>=n or y>=n:
+      return
     
-
-#올바른 문자열인지 확인 
-def check(s):
-    correct = []
-    for i in range(len(s)):
-        if s[i] == '(':
-            correct.append('(')
-        if correct and correct[-1] == '(' and s[i] == ')':
-            correct.pop()
-    if not correct:
-        return True
-    else: return False
-
-
-def reverse(strin):
-    s = list(strin)
-    for i in range(len(s)):
-        if s[i] == '(':
-            s[i] = ')'
-        else:
-            s[i] = '('
-    return ''.join(s)
+    #선생님 감시 확인    
+    for i in range(n):
+      for j in range(n):
+        print(graph)
+        if graph[i][j] == 'X' and visited[i][j] == False:
+            graph[i][j] = 'O'
+            visited[i][j]=True
+            count += 1
+        if count == 3:
+          graph[i][j] = 'X'
+          check(i,j)
+          count -= 1
+    return    
+def check(i,j):
+  print(i,j)
+dfs(0,0)
