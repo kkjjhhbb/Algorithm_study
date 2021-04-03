@@ -1,37 +1,29 @@
-n,m= map(int,input().split())
-graph = []
-temp = [[] for _ in range(n)]
-safety=0
-
+n= int(input())
+graph=[]
+count = 0
+visited=[[False]*n for i in range(n)]
+print(visited)
 for i in range(n):
-  graph.append(list(map(int,input().split())))
+  graph.append(list(input().split()))
 
-dx=[-1,0,1,0]
-dy=[0,1,0,-1]
-
-def virus(x,y):
-
-  if graph[x][y] == 2:
-    for i in range(4):
-      nx=x+dx[i]
-      ny=y+dy[i]
-
-      if nx>=0 and ny>=0 and nx<n and ny<m:
-        if graph[nx][ny]==0:
-          graph[nx][ny] = 2
-          virus(nx,ny)
-
-def safe():
-  global safety
-  num=0
-  for i in range(n):
-    for j in range(m):
-      if temp[i][j] == 0:
-        num += 1
-  
-  return  max(safety,num)
-
-def dfs(count):
-  if count == 3:
-    virus(0,0)
+def dfs(x,y):
+    global count
+    if x<0 or y<0 or x>=n or y>=n:
+      return
     
+    #선생님 감시 확인    
+    for i in range(n):
+      for j in range(n):
+        print(graph)
+        if graph[i][j] == 'X' and visited[i][j] == False:
+            graph[i][j] = 'O'
+            visited[i][j]=True
+            count += 1
+        if count == 3:
+          graph[i][j] = 'X'
+          check(i,j)
+          count -= 1
+    return    
+def check(i,j):
+  print(i,j)
+dfs(0,0)
