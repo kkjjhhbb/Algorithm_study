@@ -1,29 +1,57 @@
 n= int(input())
 graph=[]
 count = 0
-visited=[[False]*n for i in range(n)]
-print(visited)
+temp=[]
+temp=[['X']*n for i in range(n)]
+chec = False
 for i in range(n):
   graph.append(list(input().split()))
 
-def dfs(x,y):
-    global count
-    if x<0 or y<0 or x>=n or y>=n:
+dx=[-1,1,0,0]
+dy=[0,0,1,-1]
+
+def check(x,y):
+  for i in range(4):
+    nx=x+dx[i]
+    ny=y+dy[i]
+
+    if nx>=0 and ny>=0 and nx<n and ny<n:
+      if temp[nx][ny] == 'S':
+        return False
+    else:
       return
+  return True
     
-    #선생님 감시 확인    
+
+
+def dfs(count):
+  global chec
+  if count == 3:
     for i in range(n):
       for j in range(n):
-        print(graph)
-        if graph[i][j] == 'X' and visited[i][j] == False:
-            graph[i][j] = 'O'
-            visited[i][j]=True
-            count += 1
-        if count == 3:
+        temp[i][j] = graph[i][j]
+
+    for i in range(n):
+      for j in range(n):
+        if temp[i][j] == 'T':
+          if check(i,j) == True:
+            chec = True
+          elif check(i,j) == False:
+            print(i,j)
+            chec = False
+  
+    #선생님 감시 확인    
+  for i in range(1):
+    for j in range(n):
+      if graph[i][j] == 'X' :
+          graph[i][j] = 'O'
+          count += 1
+          dfs(count)
           graph[i][j] = 'X'
-          check(i,j)
-          count -= 1
-    return    
-def check(i,j):
-  print(i,j)
-dfs(0,0)
+          count -=1
+    return 1
+
+if chec == True:
+  print("YES")
+else:
+  print("NO")
