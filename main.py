@@ -1,41 +1,6 @@
-import sys
-
-sys.setrecursionlimit(10 ** 9)
-
-
-def solve(n):
-    cnt = 0
-    num = 1
-    while True:
-        str_num = str(num)
-        flag = True
-        if len(str_num) == 1:  # 길이가 1이면 무조건 감소하는 수
-            pass
-        else:
-            for i in range(1, len(str_num)):
-                if int(str_num[i]) < int(str_num[i - 1]):
-                    print('str_num',str_num,'i:',i)
-                    continue
-                else:
-                    start = str_num[:i - 1]
-                    mid = str(int(str_num[i - 1]) + 1)
-                    end = '0' + str_num[i + 1:]
-                    num = int(start + mid + end)
-                    flag = False
-                    print(str_num,start,mid,end,cnt)
-                    break
-        if flag:
-            cnt += 1
-            if cnt == n:  # n번째 감소하는 수
-                return num
-            num += 1
-
-
-if __name__ == "__main__":
-    n = int(sys.stdin.readline())
-    if n >= 1023:  # 1022: 9876543210
-        print(-1)  # N번째 감소하는 수 x
-    elif n == 0:
-        print(0)
-    else:
-        print(solve(n))
+arr=[]
+arr.append([5,6,7])
+arr.append([5,5,4])
+arr.append([45,5,3,5])
+print(arr)
+print(len(arr))
