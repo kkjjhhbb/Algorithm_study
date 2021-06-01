@@ -1,7 +1,13 @@
-a=input()
-cro = ["c=","c-","dz=","d-","lj","nj","s=","z=" ]
+def solution(N, stages):
+    stages.sort()
+    answer={}
+    num=len(stages)
+    for i in range(1,N+1):
+        num-=stages.count(i-1)
+        if stages.count(i) !=0:
+          answer[i]=stages.count(i)/num
+        else:
+          answer[i]=0
+    return answer
 
-for i in cro:
-  a=a.replace(i,'*')
-
-print(len(a))
+solution(4,[4,4,4,4,4])
