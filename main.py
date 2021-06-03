@@ -22,5 +22,3 @@ def solution(s):
           min=len(answer) #더 짧은 문자열 길이로 갱신
         print(answer)
     return min
-
-print(solution('ababcdcdababcdcd'))
