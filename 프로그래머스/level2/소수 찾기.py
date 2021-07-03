@@ -10,14 +10,11 @@ def is_prime_number(x):
 
 
 def solution(numbers):
-    number=[]
+    number=list(map(int,numbers))
     answer=[]
     num=set()
     count=0
 
-    for i in range(len(numbers)):
-        number.append(numbers[i])
-        
     for i in range(1,len(number)+1):
         answer=list(permutations(numbers,i))
         for ans in answer:
