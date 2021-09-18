@@ -1,7 +1,7 @@
 from collections import deque 
 def solution(priorities, location):
     turn =deque()
-    prin=[]
+    prin=1
     queue=deque()
     for i,prior in enumerate(priorities):
         queue.append(prior)
@@ -13,10 +13,8 @@ def solution(priorities, location):
             turn.append(turn.popleft())
             
         else:
-            prin.append(queue.popleft())
-            turn.append(turn.popleft())
-            print(turn)
-
-    return turn.index(location)+1
-
-solution([1, 1, 9, 1, 1, 1]	,0)
+            t=turn.popleft()
+            queue.popleft()
+            if t == location:
+                return prin
+            prin += 1
