@@ -1,6 +1,4 @@
-arr=[]
-for _ in range(9):
-    arr.append(int(input()))
+arr=[int(input()) for _ in range(9)]
 
 arr.sort()
 over=sum(arr)-100
