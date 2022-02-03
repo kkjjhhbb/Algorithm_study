@@ -1,4 +1,5 @@
 from collections import deque,defaultdict
+
 s,e=map(int,input().split())
 dist=[0]*(10**5+1)
 path=defaultdict(list)
