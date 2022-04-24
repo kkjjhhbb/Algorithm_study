@@ -16,9 +16,7 @@ dy=[0,1,0,-1]
 q=deque()
 moves=[[],[[0],[1],[2],[3]],[[1,3],[0,2]],[[0,1],[1,2],[2,3],[0,3]],[[0,1,3],[0,1,2],[1,2,3],[0,2,3]],[[0,1,2,3]]]
 
-# moves={'1':[[0],[1],[2],[3]],'2':[[1,3],[0,2]],'3':[[0,1],[1,2],[2,3],[0,3]],'4':[[0,1,3],[0,1,2],[1,2,3],[0,2,3]],'5':[[0,1,2,3]] }
 def bfs(x,y,direction,tmp):
-    print(direction)
     for d in direction:
         nx=x
         ny=y
@@ -27,15 +25,14 @@ def bfs(x,y,direction,tmp):
             if 0<=nx<n and 0<=ny<m and tmp[nx][ny]!=6:
                 if tmp[nx][ny] == 0:
                     tmp[nx][ny]='#'
-                else:
-                    break
-
-
+            else:
+                break
 
 def copy(arr):
-    tmp=[]
+    tmp=[[0]*m for _ in range(n)]
     for i in range(n):
-        tmp.append(arr[i])
+        for j in range(m):
+            tmp[i][j]=arr[i][j]
     return tmp
 
 def dfs(arr,cnt):
@@ -45,7 +42,6 @@ def dfs(arr,cnt):
         num=0
         for i in range(n):
             num+=tmp[i].count(0)
-        print(num)
         ans=min(ans,num)
         return
 
