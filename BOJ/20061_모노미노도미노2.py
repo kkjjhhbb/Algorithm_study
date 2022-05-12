@@ -37,6 +37,7 @@ def check_blue(arr):
 
 def deadzone_green(arr):
     cnt=0
+    ss=0
     temp=[[0]*4 for _ in range(10)]
     for i in range(2):
         if sum(arr[i]) != 0:
@@ -57,6 +58,7 @@ def deadzone_green(arr):
 def deadzone_blue(arr):
     cnt=0
     temp=[[0]*4 for _ in range(10)]
+    ss=0
     for j in range(2):
         if ss != 0:
             cnt+=1
@@ -116,10 +118,10 @@ for i in range(n):
                 arr[x][y],arr[x+1][y] =0, 0
                 break
 
-    deadzone_blue()
-    deadzone_green()
-    cg=check_green()
-    cb=check_blue()
+    deadzone_blue(arr)
+    deadzone_green(arr)
+    cg=check_green(arr)
+    cb=check_blue(arr)
 
     #연한 라인에 블록 있는지 확인
     #초록이
