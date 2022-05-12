@@ -1,16 +1,19 @@
 from collections import deque
+
+
 def solution(begin, target, words):
     queue = deque()
     queue.append([begin, 0])
     visited = [0 for _ in range(len(words))]
-
+    ans = 999
     if target not in words:
         return 0
 
     while queue:
         word, depth = queue.popleft()
         if word == target:
-            return depth
+            ans = min(ans, depth)
+            break
 
         for i in range(len(words)):
             cnt = 0
@@ -21,3 +24,4 @@ def solution(begin, target, words):
                 if cnt == 1:
                     queue.append([words[i], depth + 1])
                     visited[i] = 1
+    return ans
