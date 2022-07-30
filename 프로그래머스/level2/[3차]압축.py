@@ -1,5 +1,3 @@
-from collections import defaultdict
-
 def find(word, indexs):
     for i in range(len(word), 0, -1):
         spit = word[:i]  # 가장 긴 문자열
@@ -21,9 +19,6 @@ def LZW(word, indexs, ans):
 
 def solution(msg):
     answer = []
-    indexs = defaultdict(int)
-    for i in range(ord('A'), ord('Z') + 1):
-        indexs[chr(i)] = i - 64
-
+    indexs = {chr(e+64):e for e in range(1,27)}
     answer = LZW(msg, indexs, answer)
     return answer
