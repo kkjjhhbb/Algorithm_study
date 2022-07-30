@@ -34,6 +34,6 @@ def go(arr,index,sum):
 
     go(arr,index+1,sum+arr[index])
     go(arr,index+1,sum)
-    return
+    return #d
 go(arr,0,0)
 print(num_list.index(False))
