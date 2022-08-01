@@ -29,11 +29,6 @@ for turn,pos in enumerate(checker_pos):
             if num:
                 check_checker[turn][num]=True
 
-def which_checker(x,y):
-    for i,h in enumerate(checker_pos):
-        hx,hy=h
-        if hx<=x<(hx+3) and hy<=y<(hy+3):
-            return i
 
 def check(num,row,col,checker):
     if check_row[row][num]: #row 행에 해당 num이 있는지
@@ -51,7 +46,7 @@ def sdoku(idx):
         exit(0)
 
     row,col=where[idx]
-    checker = which_checker(row, col)
+    checker = (row//3)*3+(col//3)
 
     for i in range(1,10):
         if check(i,row,col,checker):
