@@ -55,6 +55,10 @@ def sdoku(idx):
             check_col[col][i]=True
             puzzle[row][col] = i
             sdoku(idx+1)
+            #해당 칸에 현재 숫자가 들어가지 못할 시에 리턴됨. 그럼 이전 함수에서 넣을 수 있는 다음 숫자를 넣어보게 되고, 그게 또 된다면 idx+1 하고 다시
+            #안된다면 계속 리턴되며 되는 값을 찾을 때까지 재귀
+            #그렇기 때문에 리스트에 다시 해당 칸의 정보를 append 하면 안됨. -> 무한 루프
+            print(idx, [row, col],i)
             check_row[row][i]=False
             check_checker[checker][i]=False
             check_col[col][i]=False
