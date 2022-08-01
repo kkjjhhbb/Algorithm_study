@@ -44,13 +44,13 @@ def check(num,row,col,checker):
         return False
     return True
 
-def sdoku():
-    if not where:
+def sdoku(idx):
+    if idx == len(where):
         for i in range(9):
             print(*puzzle[i])
         exit(0)
 
-    row,col=where.pop()
+    row,col=where[idx]
     checker = which_checker(row, col)
 
     for i in range(1,10):
@@ -59,12 +59,11 @@ def sdoku():
             check_checker[checker][i]=True
             check_col[col][i]=True
             puzzle[row][col] = i
-            sdoku()
+            sdoku(idx+1)
             check_row[row][i]=False
             check_checker[checker][i]=False
             check_col[col][i]=False
             puzzle[row][col] = 0
-            where.append((row,col))
 
-sdoku()
+sdoku(0)
 
