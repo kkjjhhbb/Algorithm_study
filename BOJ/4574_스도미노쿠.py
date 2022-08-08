@@ -69,6 +69,8 @@ while True:
         y=z%9
         if(puzzle[x][y]):
             return sdoku(z+1) # 왜 리턴으로 함수를 실행하는지
+        #함수를 리턴하는 것이 아니라, 함수를 실행한 후에 반환 값을 리턴함.
+        #
         else:
             for k in range(2):
                 nx = x + dx[k]
